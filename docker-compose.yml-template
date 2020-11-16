@@ -1,0 +1,36 @@
+version: '2'
+services:
+  syslog:
+    ##################################################
+    # BUILD - section
+    ##################################################
+    build:
+      context: ./build
+      dockerfile: Dockerfile
+      #args:
+      #  BUILD_TZ: Europe/Berlin
+    ##################################################
+    # RUN / UP - section
+    ##################################################
+    image: unimock/rsyslog-docker:0.0.1
+    container_name: rsyslog
+    restart: unless-stopped
+    hostname: syslog
+    volumes:
+      - ./log:/var/log/remote
+      - ./service:/service
+      #- ./rsyslog.conf:/etc/rsyslog.conf
+    ports:
+      - "514:514/udp"
+      - "514:514"
+    #pids_limit: 20
+    #cpu_shares: 1023
+    mem_limit: 100m
+    #shm_size: 32m
+    #stdin_open: true
+    #tty: true
+    #networks:
+    #  - default
+#networks:
+#  default:
+  

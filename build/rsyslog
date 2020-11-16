@@ -1,0 +1,8 @@
+/var/log/messages /var/log/remote/*/.*.log /var/log/remote/*/*.log {
+    sharedscripts
+    missingok
+    notifempty
+    postrotate
+        kill -HUP $(cat /run/rsyslogd.pid) &>/dev/null || true
+    endscript
+}
