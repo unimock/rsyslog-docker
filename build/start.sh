@@ -4,6 +4,15 @@ echo "#################################################"
 echo "# starting container boot up script (start.sh)  #"
 echo "#################################################"
 
+cp /usr/share/zoneinfo/${TZ} /etc/localtime
+
+echo "$TZ" > /etc/timezone
+
+if [ "$CRON_STRINGS" != "" ] ; then
+  echo -e "$CRON_STRINGS\n" > /etc/crontabs/root
+fi
+
+
 list=$(ls -1 /boot.d/*)
 for i in $list ; do
   echo "execute : <$i>"

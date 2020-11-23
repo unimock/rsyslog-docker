@@ -6,10 +6,11 @@ RUN apk add --no-cache \
       rsyslog \
       rsyslog-tls \
       logrotate \
+      tzdata \
       supervisor \
       dcron
 
-COPY ./logrotate /etc/periodic/hourly/
+COPY ./logrotate /usr/local/bin
 COPY ./rsyslog /etc/logrotate.d
 COPY ./logrotate.conf /etc/
 
