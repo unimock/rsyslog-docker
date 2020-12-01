@@ -4,11 +4,9 @@ services:
     ##################################################
     # BUILD - section
     ##################################################
-    build:
-      context: ./build
-      dockerfile: Dockerfile
-      #args:
-      #  BUILD_TZ: Europe/Berlin
+    #build:
+    #  context: ./build
+    #  dockerfile: Dockerfile
     ##################################################
     # RUN / UP - section
     ##################################################
