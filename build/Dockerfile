@@ -10,6 +10,7 @@ RUN apk add --no-cache \
       supervisor \
       dcron
 
+RUN  rm /etc/periodic/daily/logrotate
 COPY ./logrotate /usr/local/bin
 COPY ./rsyslog /etc/logrotate.d
 COPY ./logrotate.conf /etc/

@@ -5,11 +5,13 @@ echo "# starting container boot up script (start.sh)  #"
 echo "#################################################"
 
 cp /usr/share/zoneinfo/${TZ} /etc/localtime
-
 echo "$TZ" > /etc/timezone
 
+
 if [ "$CRON_STRINGS" != "" ] ; then
-  echo -e "$CRON_STRINGS\n" > /etc/crontabs/root
+  echo -e "$CRON_STRINGS\n"                 > /etc/crontabs/root
+else
+  echo "0 * * * * /usr/local/bin/logrotate" > /etc/crontabs/root
 fi
 
 

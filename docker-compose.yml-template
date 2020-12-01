@@ -12,7 +12,7 @@ services:
     ##################################################
     # RUN / UP - section
     ##################################################
-    image: unimock/rsyslog-docker:0.0.2
+    image: unimock/rsyslog-docker:0.1.1
     container_name: rsyslog
     restart: unless-stopped
     hostname: syslog
@@ -21,8 +21,8 @@ services:
       - ./service:/service
     environment:
       - TZ=Europe/Berlin
-      - CRON_STRINGS=0 * * * * root /usr/local/bin/logrotate
-      #- CRON_STRINGS=0 * * * * root /usr/local/bin/logrotate\n0 1 * * * root /usr/local/bin/logrotate 
+      #- CRON_STRINGS=0 * * * * /usr/local/bin/logrotate\n0 1 * * * root /usr/local/bin/logrotate
+      # DEFAULT =  "0 * * * * /usr/local/bin/logrotate" 
     ports:
       - "514:514/udp"
       - "514:514"
